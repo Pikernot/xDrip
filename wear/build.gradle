@@ -223,7 +223,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation "com.google.truth:truth:0.39"
 
-    implementation 'uk.com.robust-it:cloning:1.9.5'
+    implementation 'uk.com.robust-it:cloning:1.9.12'
     // you will want to install the android studio lombok plugin
     compileOnly 'org.projectlombok:lombok:1.18.10'
 //    compileOnly 'javax.annotation:javax.annotation-api:1.3.1'
