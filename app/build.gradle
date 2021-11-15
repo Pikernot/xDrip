@@ -323,7 +323,7 @@ dependencies {
     //implementation 'com.google.android.gms:play-services-drive:9.4.0'
     implementation 'com.google.firebase:firebase-messaging:10.2.1'
     implementation 'com.google.android.gms:play-services-maps:10.2.1'
-    implementation 'com.google.android.gms:play-services-wearable:10.2.1'
+    implementation 'com.google.android.gms:play-services-wearable:17.1.0'
     implementation 'com.google.android.gms:play-services-location:10.2.1'
     implementation "com.google.android.gms:play-services-gcm:10.2.1"
     implementation 'com.squareup.wire:wire-runtime:2.2.0'
