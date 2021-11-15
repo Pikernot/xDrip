@@ -355,7 +355,7 @@ dependencies {
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0'
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0'
     implementation 'org.slf4j:slf4j-api:1.7.7'
-    implementation 'org.apache.commons:commons-math3:3.6'
+    implementation 'org.apache.commons:commons-math3:3.6.1'
     implementation 'uk.com.robust-it:cloning:1.9.5'
     implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
     // implementation 'com.itextpdf:itextg:5.5.9'
