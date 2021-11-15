@@ -209,7 +209,7 @@ dependencies {
     //implementation files('libs/hellocharts-library-1.5.5.jar')
     implementation(name: 'ustwo-clockwise-debug', ext: 'aar')
     implementation 'me.denley.wearpreferenceactivity:wearpreferenceactivity:0.5.0'
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.9'
 
     implementation 'com.tananaev:adblib:1.3'
 
