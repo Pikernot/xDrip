@@ -321,7 +321,7 @@ dependencies {
     implementation 'com.android.support:cardview-v7:26.1.0'
     implementation 'com.android.support:preference-v7:26.1.0'
     //implementation 'com.google.android.gms:play-services-drive:9.4.0'
-    implementation 'com.google.firebase:firebase-messaging:10.2.1'
+    implementation 'com.google.firebase:firebase-messaging:23.0.0'
     implementation 'com.google.android.gms:play-services-maps:10.2.1'
     implementation 'com.google.android.gms:play-services-wearable:10.2.1'
     implementation 'com.google.android.gms:play-services-location:10.2.1'
@@ -344,7 +344,7 @@ dependencies {
     implementation 'io.reactivex:rxjava:1.3.3'
     implementation 'com.activeandroid:thread-safe-active-android:3.1.1'
     //implementation 'com.github.lecho:hellocharts-android:v1.5.8'
-    implementation "com.polidea.rxandroidble2:rxandroidble:1.12.1"
+    implementation "com.polidea.rxandroidble2:rxandroidble:1.13.0"
     implementation 'com.google.guava:guava:24.1-android'
     implementation 'com.embarkmobile:zxing-android-minimal:2.0.0@aar'
     implementation 'com.embarkmobile:zxing-android-integration:2.0.0@aar'
