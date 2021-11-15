@@ -324,7 +324,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:10.2.1'
     implementation 'com.google.android.gms:play-services-maps:10.2.1'
     implementation 'com.google.android.gms:play-services-wearable:10.2.1'
-    implementation 'com.google.android.gms:play-services-location:10.2.1'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation "com.google.android.gms:play-services-gcm:10.2.1"
     implementation 'com.squareup.wire:wire-runtime:2.2.0'
     implementation 'com.squareup.okhttp:okhttp:2.7.5'
