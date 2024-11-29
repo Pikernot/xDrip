@@ -7,6 +7,7 @@ import com.eveningoutpost.dexdrip.models.InsulinInjection;
 import com.eveningoutpost.dexdrip.models.JoH;
 import com.eveningoutpost.dexdrip.models.Treatments;
 import com.eveningoutpost.dexdrip.models.UserError;
+import com.mongodb.util.JSON;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +33,8 @@ public class NightscoutTreatments {
         boolean new_data = false;
 
         final JSONArray jsonArray = new JSONArray(response);
+        UserError.Log.d(TAG, "JSON = " + jsonArray);
+
         for (int i = 0; i < jsonArray.length(); i++) {
             final JSONObject tr = (JSONObject) jsonArray.get(i);
 
@@ -49,7 +52,6 @@ public class NightscoutTreatments {
             boolean from_xdrip = false;
             try {
                 if (tr.getString("enteredBy").startsWith(Treatments.XDRIP_TAG)) {
-                    from_xdrip = true;
                     if (d) UserError.Log.d(TAG, "This record came from xDrip");
                 }
             } catch (JSONException e) {

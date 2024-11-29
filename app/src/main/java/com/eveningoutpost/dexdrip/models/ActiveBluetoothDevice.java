@@ -41,6 +41,14 @@ public class ActiveBluetoothDevice extends Model {
         return btDevice.address;
     }
 
+    public static String btDeviceName() {
+        final ActiveBluetoothDevice btDevice = ActiveBluetoothDevice.first();
+        if (btDevice == null || btDevice.name == null) {
+            return "";
+        }
+        return btDevice.name;
+    }
+
     public static synchronized  void forget() {
         ActiveBluetoothDevice activeBluetoothDevice = ActiveBluetoothDevice.first();
         if (activeBluetoothDevice != null) {

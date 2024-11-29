@@ -459,6 +459,10 @@
             android:enabled="true"
             android:foregroundServiceType="connectedDevice|location" />
         <service
+            android:name=".services.PoctechCollectionService"
+            android:enabled="true"
+            android:foregroundServiceType="connectedDevice|location" />
+        <service
             android:name=".insulin.pendiq.PendiqService"
             android:enabled="true"
             android:exported="false"
@@ -581,7 +585,7 @@
         </receiver>
         <receiver android:name=".NSEmulatorReceiver">
             <intent-filter>
-                <action android:name="com.eveningoutpost.dexdrip.NS_EMULATOR" />
+                <action android:name="com.eveningoutpost.dexdrip.adNS_EMULATOR" />
                 <action android:name="com.eveningoutpost.dexdrip.OOP2_DECODE_FARM_RESULT" />
                 <action android:name="com.eveningoutpost.dexdrip.OOP2_DECODE_BLE_RESULT" />
                 <action android:name="com.eveningoutpost.dexdrip.OOP2_BLUETOOTH_ENABLE_RESULT" />
