@@ -223,6 +223,8 @@
     <string name="other_alerts">Други Известия</string>
     <string name="extra_alerts_xdrip_plus">Допълнителни Известия (xDrip+)</string>
     <string name="persistent_high_alert">Известие за продължително висока КЗ</string>
+    <string name="persistent_high_alert_enable">Включи</string>
+    <string name="title_persistent_high_threshold">Праг</string>
     <string name="forecasted_low_alert">Известие за предвиждана Ниска КЗ</string>
     <string name="extrapolate_data_to_try_to_predict_lows">Екстраполиране на данните в опит да се предвиди ниска КЗ</string>
     <string name="alarm_at_forecasted_low_mins">Аларма при предвиждане на Ниски стойности(Кз)</string>
@@ -650,7 +652,7 @@
     <string name="allow_daily_db_save">Позволява на услугата Daily Intent Service да запазва базата данни преди изтриване</string>
     <string name="options_for_extra_line">Опции за допълнителната линия</string>
     <string name="todays_average_value">Днешна средна стойност.</string>
-    <string name="ac1_estimation_dcct">Гликиран хеемоглобин в %</string>
+    <string name="ac1_estimation_dcct">Гликиран хемоглобин в (%)</string>
     <string name="ac1_estimation_ifcc">Гликиран Хемоглобин измерен в милимол/мол</string>
     <string name="percentage_in_range">Процент на стойностите в диапазона.</string>
     <string name="percentage_below_range">Процент на стойностите под диапазона.</string>
@@ -1404,6 +1406,7 @@
     <string name="summary_plus_accept_follower_actions">Ще се приемат лечения, калибриране и други действия от последователи</string>
     <string name="title_plus_accept_follower_actions">Приемане на действия на последователи</string>
     <string name="summary_plus_whole_house">Участвайте в мрежа за цял дом</string>
+    <string name="summary_plus_xdrip_cloud">При използване на новите xDrip+ облачни сървъри, мастера и последователите трябва да са направили настройката по еднакъв начин.</string>
     <string name="title_plus_whole_house">Цял Дом</string>
     <string name="summary_libre_whole_house_collector">Този телефон ще бъде колекционер в цялата домашна мрежа</string>
     <string name="title_libre_whole_house_collector">Libre цяла къща</string>
@@ -1453,6 +1456,8 @@
     <string name="category_falling_rising_bg">Падане/Покачване на КЗ</string>
     <string name="category_alert_prefs">Предпочитания за известия (за тези известия)</string>
     <string name="summary_persistent_high_alert">Когато е над високо ниво за твърде дълго време и не се насочва надолу</string>
+    <string name="summary_persistent_high_threshold_link">Когато активирано, Висока Стойност ще бъде прага.\n Когато деактивирано, прагат ще бъде стойността, която е посоченa по-долу.</string>
+    <string name="title_persistent_high_threshold_link">Праг: Висока стойност</string>
     <string name="note_search_button">ТЪРСИ</string>
     <string name="all_note_button">ВСИЧКИ</string>
     <string name="title_full_screen_mode">Режим на цял екран</string>
@@ -1719,6 +1724,7 @@
     <string name="proceed">Продължи</string>
     <string name="special_pairing_workaround">Специално решение за сдвояване</string>
     <string name="save_power">Съхранение на енергия</string>
+    <string name="use_xdrip_cloud">Използване на xDrip облак</string>
     <string name="reduce_battery_and_network_overhead">Намаляване консумация на батерия и мрежа използвайки бач процесване на данните</string>
     <string name="simplify_graphs_by_smoothing_out_irregularities">Опрости графики като изглажда нередни данни</string>
     <string name="graph_smoothing">Изглаждане на графика</string>
@@ -1796,6 +1802,7 @@
     <string name="summary_ymax">Избрете yМакс в случай, когато няма по-Големи стойности.</string>
     <string name="wait_to_connect">Проверете настройките и изчакайте за свързване.</string>
     <string name="summary_sens_expiry_notify">Повиши честотата на известията, когато наближи да изтече срокът на ползване на сензора.</string>
+    <string name="title_sens_expiry">Известия за изтичане на срока на действие на сензора</string>
     <string name="title_sens_expiry_notify">Възраст на сензора</string>
     <string name="close">Затвори</string>
     <string name="title_advanced_settings_4_Lib2">Разширени настройки за Libre 2</string>
@@ -1847,4 +1854,5 @@
     <string name="use_camera_light">Използвай светкавицата на камерата</string>
     <string name="use_camera_light_summary">Премигване на светкавицата на камерата по време на аларми, когато е свързано зарядното устройство</string>
     <string name="g7_should_start_automatically">G7 би трябвало да стартира автоматично</string>
+    <string name="screenshot">Екранна снимка</string>
 </resources>
