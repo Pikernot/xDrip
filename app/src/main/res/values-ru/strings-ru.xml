@@ -61,6 +61,7 @@
     <string name="pref_title_api_enabled">Включено</string>
     <string name="pref_summary_api_enabled">REST API – стандартный способ подключения к Nightscout</string>
     <string name="pref_title_api_url">Базовый URL</string>
+    <string name="pref_summary_api_url">Формат: https://пароль@хост/api/v1/</string>
     <string name="pref_dialog_api_url">Введите базовый API URL</string>
     <string name="pref_message_api_url">Это только базовый URL, загрузчик будет автоматически добавлять /entries для POST. API_SECRET на сервере должен соответствовать вашпароль в этой настройке.</string>
     <string name="pref_default_api_url">https://вашпароль@{ВАШ-САЙТ}.herokuapp.com/API/v1/</string>
@@ -750,6 +751,7 @@
     <string name="glucose_meters">Глюкометры</string>
     <string name="glucose_meter_options">Настройки для беспроводных глюкометров</string>
     <string name="auto_connect_to_meter">Автоматически подключаться и извлекать данные из стандартных подходящих глюкометров, таких как Contour Next One</string>
+    <string name="title_use_nfc_meter">Использовать NFC-глюкометр</string>
     <string name="use_bluetooth_meter">Использ. Bluetooth-глюкометр</string>
     <string name="scan_for_bluetooth_meter">Найти Bluetooth-глюкометр</string>
     <string name="meter_connect_sound">Включите это для проигрывания звуковых эффектов, когда глюкометр подключается, отсоединяется или синхронизирует данные</string>
@@ -874,8 +876,8 @@
     <string name="bridge_battery_dropped_to">Заряд трансмиттера снизился до:</string>
     <string name="sensor_will_expire_in">Сенсор закончится через</string>
     <string name="sensor_expiring">Сенсор заканчивается</string>
-    <string name="wake_screen">Включать экран</string>
-    <string name="wake_up_screen_during_alerts">Включать экран во время тревог. Может разблокировать устройства с выключенной блокировкой экрана.</string>
+    <string name="wake_up_screen">Включать экран</string>
+    <string name="wake_up_screen_summary">Включать экран во время тревог. Может разблокировать устройства с выключенной блокировкой экрана.</string>
     <string name="reminders">Напоминания</string>
     <string name="error">ошибка</string>
     <string name="install_text_to_speech_data_question">Установить данные текста-в-речь?</string>
@@ -1218,6 +1220,7 @@
     <string name="title_tidepool_window_latency">Возраст данных в минутах</string>
     <string name="summary_tidepool_dev_servers">Если включено, загрузки будут идти в https://int-app.tidepool.org, а не в обычный https://app.tidepool.org/</string>
     <string name="title_tidepool_dev_servers">Использовать серверы Integration (тест)</string>
+    <string name="title_tidepool_upload_no_treatment">Не отправлять терапию</string>
     <string name="title_tidepool">Tidepool</string>
     <string name="show_help">Показать справку</string>
     <string name="load_save_settings_on_sdcard">Загрузить/сохранить настройки</string>
@@ -1301,6 +1304,8 @@
     <string name="summary_lefun_send_alarms">Отправлять уведомления на браслет для тревог о глюкозе</string>
     <string name="title_lefun_send_alarms">Отправлять тревоги</string>
     <string name="title_lefun_option_shake_snoozes">Потрясти для откладывания</string>
+    <string name="summary_lefun_send_calls">Отправлять уведомления о звонках на браслет</string>
+    <string name="title_lefun_send_calls">Отправлять звонки</string>
     <string name="title_lefun_screens_features">Экраны/функции Lefun</string>
     <string name="title_features">Функции</string>
     <string name="title_lefun_feature_lift_to_wak">Поднять для пробуждения</string>
@@ -1368,6 +1373,7 @@
     <string name="title_ob1_g5_fallback_to_xdrip">Откат к xDrip</string>
     <string name="summary_ob1_minimize_scanning">Использовать эвристику для минимизации поиска Bluetooth + сохранения энергии</string>
     <string name="title_ob1_minimize_scanning">Минимизировать поиск</string>
+    <string name="title_ob1_avoid_scanning">Избегать сканирования</string>
     <string name="summary_using_g6">Я использую сенсор G6 или Dexcom 1</string>
     <string name="title_using_g6">Поддержка G6/Dex1</string>
     <string name="summary_ob1_g5_allow_resetbond">Коллектор OB1 может отсоединяться, если он думает, что шифрование не удалось. Если у вас проблемы с этим отсоединением, то выключите эту настройку. Если после этого вы полностью потеряете соединение, убедитесь, что это включено.</string>
@@ -1524,6 +1530,7 @@
     <string name="progress">в процессе</string>
     <string name="bluetooth_device">Устройство Bluetooth:</string>
     <string name="transmitter_battery_status">Батарея Трансмиттера</string>
+    <string name="database_size">Размер базы данных:</string>
     <string name="top">Наверх</string>
     <string name="connect_device_usb_otg">Пожалуйста, подключите ваше устройство через кабель USB OTG.</string>
     <string name="connection_status">Состояние соединения:</string>
@@ -1547,7 +1554,7 @@
     <string name="bluetooth_bridge_device_blucon_limitter_bluereader_tomato_etc">Устройство Bluetooth Bridge: Blucon, Bubble, LimiTTer, Bluereader, Tomato и т.д.</string>
     <string name="libre_patched">Libre2 Patched</string>
     <string name="librealarm_app_using_sony_smartwatch">Приложение LibreAlarm: использование Sony Smartwatch</string>
-    <string name="__data_source_disabled">\n ИСТОЧНИК ДАННЫХ ОТКЛЮЧЕН</string>
+    <string name="__data_source_disabled">\n ИСТОЧНИК САХАРА НЕ ВЫБРАН</string>
     <string name="data_source_is_set_to_">Выбранный источник данных:</string>
     <string name="__do_you_want_to_change_settings_or_start_sensor">\n\nХотите изменить настройки или запустить сенсор?</string>
     <string name="change_settings">Изменить настройки</string>
@@ -1938,4 +1945,15 @@
     <string name="use_camera_light">Использовать вспышку камеры</string>
     <string name="use_camera_light_summary">Мигать вспышкой камеры во время тревог, когда подключено к зарядке</string>
     <string name="g7_should_start_automatically">G7 должен запускаться автоматически</string>
+    <string name="summary_use_nfc_meter">Скачивать показания глюкозы с глюкометра NFC, когда xDrip+ открыт</string>
+    <string name="summary_tidepool_upload_when_chargeonly">Отправлять данные только во время зарядки</string>
+    <string name="title_tidepool_upload_when_chargeonly">Только при зарядке</string>
+    <string name="summary_tidepool_upload_only_wifi">Отправлять данные только при подключении к безлимитной сети, напр. WiFi</string>
+    <string name="title_tidepool_upload_only_wifi">Только через WiFi</string>
+    <string name="summary_tidepool_upload_no_treatment">Отправлять только данные ГК, чтобы избежать дубликатов с ручной выгрузкой с помпы</string>
+    <string name="summary_ob1_avoid_scanning">Избегать сканирования, насколько возможно (снижает использование батареи)</string>
+    <string name="screenshot">Скриншот</string>
+    <string name="bg_alert">ГК %1$s ТРЕВОГА: %2$s (@%3$s)</string>
+    <string name="show_graphical_trend_arrow">Показывать графическую стрелку тренда</string>
+    <string name="no_alert_in_silent_mode">Без тревог при режиме без звука</string>
 </resources>
