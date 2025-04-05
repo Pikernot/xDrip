@@ -292,15 +292,18 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private synchronized void backoff_automata() {
+        UserError.Log.d(TAG, "Метод 1");
         background_automata(error_backoff_ms);
         if (error_backoff_ms < max_error_backoff_ms) error_backoff_ms += 100;
     }
 
     public void background_automata() {
+        UserError.Log.d(TAG, "Метод 2");
         background_automata(DEFAULT_AUTOMATA_DELAY);
     }
 
     public synchronized void background_automata(final int timeout) {
+        UserError.Log.d(TAG, "Метод 3");
         if (background_launch_waiting) {
             UserError.Log.d(TAG, "Blocked by existing background automata pending");
             return;
@@ -316,15 +319,18 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private static boolean specialPairingWorkaround() {
+        UserError.Log.d(TAG, "Метод 4");
         return Pref.getBooleanDefaultFalse("ob1_special_pairing_workaround");
     }
 
     private static boolean getTrustAutoConnect() {
+        UserError.Log.d(TAG, "Метод 5");
         return Pref.getBoolean("bluetooth_trust_autoconnect", true);
     }
 
 
     private synchronized void automata() {
+        UserError.Log.d(TAG, "Метод 6");
 
         if ((last_automata_state != state) || state == INIT || (JoH.ratelimit("jam-g5-dupe-auto", 2))) {
             last_automata_state = state;
@@ -459,6 +465,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private boolean useMinimizeScanningStrategy() {
+        UserError.Log.d(TAG, "Метод 7");
         tryLoadingSavedMAC();
         final int modulo = (connectNowFailures + scanTimeouts) % 2;
         UserError.Log.d(TAG, "minimize: " + minimize_scanning + " mac: " + transmitterMAC + " lastfailed:" + lastConnectFailed + " nowfail:" + connectNowFailures + " stimeout:" + scanTimeouts + " modulo:" + modulo);
@@ -488,6 +495,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private void estimateAnticipateFromLinkedData() {
+        UserError.Log.d(TAG, "Метод 8");
         final BgReading bg = BgReading.last();
         if (bg != null && bg.timestamp > static_last_connected && msSince(bg.timestamp) < HOUR_IN_MS * 3) {
             final long ts = bg.timestamp - Constants.SECOND_IN_MS;
@@ -497,15 +505,18 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private void resetState() {
+        UserError.Log.d(TAG, "Метод 9");
         UserError.Log.e(TAG, "Resetting sequence state to INIT");
         changeState(INIT);
     }
 
     public STATE getState() {
+        UserError.Log.d(TAG, "Метод 10");
         return state;
     }
 
     public void changeState(STATE new_state) {
+        UserError.Log.d(TAG, "Метод 11");
         if (shouldServiceRun()) {
             changeState(new_state, DEFAULT_AUTOMATA_DELAY);
         } else {
@@ -515,6 +526,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public void changeState(STATE new_state, int timeout) {
+        UserError.Log.d(TAG, "Метод 12");
         if ((state == CLOSED || state == CLOSE) && new_state == CLOSE) {
             UserError.Log.d(TAG, "Not closing as already closed");
         } else {
@@ -528,6 +540,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private synchronized void initialize() {
+        UserError.Log.d(TAG, "Метод 13");
         if (state == INIT) {
             msg("Initializing");
             static_connection_state = null;
@@ -544,6 +557,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private static void init_tx_id() {
+        UserError.Log.d(TAG, "Метод 14");
         val TXID_PREF = "dex_txid";
         val txid = Pref.getString(TXID_PREF, "NULL");
         val txid_filtered = txid.trim();
@@ -557,6 +571,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     private volatile boolean lastWasScanByMac = false;
 
     private synchronized void scan_for_device() {
+        UserError.Log.d(TAG, "Метод 15");
         if (state == SCAN) {
             msg(gs(R.string.scanning));
             stopScan();
@@ -629,6 +644,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private void stopScanWithTimeoutAndReschedule() {
+        UserError.Log.d(TAG, "Метод 16");
         stopScan();
         UserError.Log.d(TAG, "Stopped scan due to timeout at: " + JoH.dateTimeText(tsl()));
         //noinspection NonAtomicOperationOnVolatileField
@@ -639,6 +655,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
 
     private synchronized void connect_to_device(boolean auto) {
+        UserError.Log.d(TAG, "Метод 17");
         if ((state == CONNECT) || (state == CONNECT_NOW)) {
             // TODO check mac
             if (transmitterMAC == null) {
@@ -705,6 +722,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private synchronized void discover_services() {
+        UserError.Log.d(TAG, "Метод 18");
         if (state == DISCOVER) {
             if (connection != null) {
                 if (d)
@@ -723,6 +741,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private synchronized void create_bond() {
+        UserError.Log.d(TAG, "Метод 19");
         if (state == BOND) {
             try {
                 msg("Bonding");
@@ -739,6 +758,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public synchronized void reset_bond(boolean allow) {
+        UserError.Log.d(TAG, "Метод 20");
         if (allow || (JoH.pratelimit("ob1-bond-cycle", 7200))) {
             UserError.Log.e(TAG, "Attempting to refresh bond state");
             msg("Resetting Bond");
@@ -748,6 +768,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private synchronized void do_create_bond() {
+        UserError.Log.d(TAG, "Метод 21");
         final boolean isDeviceLocallyBonded = isDeviceLocallyBonded();
         UserError.Log.d(TAG, "Attempting to create bond, device is : " + (isDeviceLocallyBonded ? "BONDED" : "NOT Bonded"));
 
@@ -770,6 +791,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private void startInitiateBondReal() {
+        UserError.Log.d(TAG, "Метод 22");
         try {
             weInitiatedBondConfirmation = 1;
             instantCreateBondIfAllowed();
@@ -779,6 +801,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private synchronized void send_reset_command() {
+        UserError.Log.d(TAG, "Метод 23");
         hardResetTransmitterNow = false;
         getBatteryStatusNow = true;
         if (JoH.ratelimit("reset-command", 1200)) {
@@ -790,6 +813,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private String getTransmitterBluetoothName() {
+        UserError.Log.d(TAG, "Метод 24");
         if (transmitterID == null || transmitterID.length() <= 4) return null;
         final String transmitterIdLastTwo = getLastTwoCharacters(transmitterID);
         // todo check for bad config
@@ -797,10 +821,12 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static String getMac() {
+        UserError.Log.d(TAG, "Метод 25");
         return transmitterMAC;
     }
 
     private void tryLoadingSavedMAC() {
+        UserError.Log.d(TAG, "Метод 26");
         if ((transmitterMAC == null) || (!transmitterIDmatchingMAC.equals(transmitterID))) {
             if (transmitterID != null) {
                 final String this_mac = PersistentStore.getString(OB1G5_MACSTORE + transmitterID);
@@ -821,6 +847,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     // should this service be running? Used to decide when to shut down
     private static boolean shouldServiceRun() {
+        UserError.Log.d(TAG, "Метод 27");
         if (!Pref.getBooleanDefaultFalse(OB1G5_PREFS)) return false;
         if (!(DexCollectionType.getDexCollectionType() == DexcomG5)) return false;
 
@@ -850,6 +877,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static synchronized boolean isDeviceLocallyBonded() {
+        UserError.Log.d(TAG, "Метод 28");
         if (transmitterMAC == null) return false;
         final Set<RxBleDevice> pairedDevices = rxBleClient.getBondedDevices();
         if ((pairedDevices != null) && (pairedDevices.size() > 0)) {
@@ -863,14 +891,17 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static boolean immediateBonding() {
+        UserError.Log.d(TAG, "Метод 29");
         return Pref.getBooleanDefaultFalse("engineering_ob1_bonding_test") || isNative();
     }
 
     public static boolean ignoreBonding() {
+        UserError.Log.d(TAG, "Метод 30");
         return Pref.getBooleanDefaultFalse("engineering_ob1_ignore_bonding");
     }
 
     private byte[] fwChalCache(boolean prefix) {
+        UserError.Log.d(TAG, "Метод 31");
         final long chal = Pref.getLong("engineering_ob1_chal_cache" + (prefix ? "_1" : ""), 0);
         if (chal != 0 && shortTxId()) {
             final byte[] bytes = new byte[8];
@@ -884,6 +915,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private synchronized void checkAndEnableBT() {
+        UserError.Log.d(TAG, "Метод 32");
         try {
             if (Pref.getBoolean("automatically_turn_bluetooth_on", true)) {
                 final BluetoothAdapter mBluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
@@ -901,6 +933,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public synchronized void unBond() {
+        UserError.Log.d(TAG, "Метод 33");
 
         UserError.Log.d(TAG, "unBond() start");
         if (transmitterMAC == null) return;
@@ -933,6 +966,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
 
     public static String getTransmitterID() {
+        UserError.Log.d(TAG, "Метод 34");
         if (transmitterID == null) {
             init_tx_id();
         }
@@ -940,6 +974,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private void handleWakeup() {
+        UserError.Log.d(TAG, "Метод 35");
         if (always_scan) {
             UserError.Log.d(TAG, "Always scan mode");
             changeState(SCAN);
@@ -959,6 +994,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
 
     private synchronized void prepareToWakeup() {
+        UserError.Log.d(TAG, "Метод 36");
         if (JoH.ratelimit("g5-wakeup-timer", 5)) {
             final long when = DexSyncKeeper.anticipate(transmitterID);
             if (when > 0) {
@@ -988,6 +1024,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public synchronized void savePersist() {
+        UserError.Log.d(TAG, "Метод 37");
         if (plugin != null) {
             PersistentStore.cleanupOld(KEKS_ONE);
             PersistentStore.setBytes(KEKS_ONE + transmitterMAC, plugin.getPersistence(1));
@@ -995,15 +1032,18 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static void clearPersistStore() {
+        UserError.Log.d(TAG, "Метод 38");
         PersistentStore.removeItem(KEKS_ONE + transmitterMAC);
     }
 
     public static void clearPersist() {
+        UserError.Log.d(TAG, "Метод 39");
         clearPersistStore();
         expireFailures(true);
     }
 
     private void scheduleWakeUp(long future, final String info) {
+        UserError.Log.d(TAG, "Метод 40");
         if (future <= 0) future = 5000;
         UserError.Log.d(TAG, "Scheduling wakeup @ " + JoH.dateTimeText(tsl() + future) + " (" + info + ")");
         if (pendingIntent == null)
@@ -1014,6 +1054,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public void incrementErrors() {
+        UserError.Log.d(TAG, "Метод 41");
         error_count++;
         if (error_count > 1) {
             UserError.Log.e(TAG, "Error count reached: " + error_count);
@@ -1021,19 +1062,23 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public int incrementRetry() {
+        UserError.Log.d(TAG, "Метод 42");
         retry_count++;
         return retry_count;
     }
 
     public void clearErrors() {
+        UserError.Log.d(TAG, "Метод 43");
         error_count = 0;
     }
 
     public void clearRetries() {
+        UserError.Log.d(TAG, "Метод 44");
         retry_count = 0;
     }
 
     private void checkAlwaysScanModels() {
+        UserError.Log.d(TAG, "Метод 45");
         final String this_model = Build.MODEL;
         UserError.Log.d(TAG, "Checking model: " + this_model);
 
@@ -1066,6 +1111,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     @Override
     public void onCreate() {
+        UserError.Log.d(TAG, "Метод 46");
         super.onCreate();
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
@@ -1108,6 +1154,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        UserError.Log.d(TAG, "Метод 47");
         xdrip.checkAppContext(getApplicationContext());
         final PowerManager.WakeLock wl = JoH.getWakeLock("g5-start-service", 310000);
         try {
@@ -1165,6 +1212,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     @Override
     public void onDestroy() {
+        UserError.Log.d(TAG, "Метод 48");
         msg("Shutting down");
         if (pendingIntent != null) {
             JoH.cancelAlarm(this, pendingIntent);
@@ -1195,6 +1243,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public void unregisterPairingReceiver() {
+        UserError.Log.d(TAG, "Метод 49");
         try {
             unregisterReceiver(mPairingRequestRecevier);
         } catch (Exception e) {
@@ -1203,6 +1252,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private synchronized void stopScan() {
+        UserError.Log.d(TAG, "Метод 50");
         if (scanSubscription != null) {
             scanSubscription.unsubscribe();
         }
@@ -1215,6 +1265,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private synchronized void stopConnect() {
+        UserError.Log.d(TAG, "Метод 51");
         if (connectionSubscription != null) {
             connectionSubscription.unsubscribe();
         }
@@ -1224,12 +1275,14 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private synchronized void stopDiscover() {
+        UserError.Log.d(TAG, "Метод 52");
         if (discoverSubscription != null) {
             discoverSubscription.unsubscribe();
         }
     }
 
     private boolean isScanMatch(final String this_address, final String historical_address, final String this_name, final String search_name) {
+        UserError.Log.d(TAG, "Метод 53");
         if (search_name == null && (this_address.equalsIgnoreCase(historical_address) || this_name == null ||
                 (emptyString(historical_address) && this_name.startsWith("DXCM")) ||
                 (emptyString(historical_address) && this_name.startsWith("DX02")) ||
@@ -1251,11 +1304,13 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static void clearScanError() {
+        UserError.Log.d(TAG, "Метод 54");
         lastScanError = null;
     }
 
     // Successful result from our bluetooth scan
     private synchronized void onScanResult(final ScanResult bleScanResult) {
+        UserError.Log.d(TAG, "Метод 55");
         // TODO MIN RSSI
         final int this_rssi = bleScanResult.getRssi();
         final String this_name = bleScanResult.getBleDevice().getName();
@@ -1292,6 +1347,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public void saveTransmitterMac() {
+        UserError.Log.d(TAG, "Метод 56");
         UserError.Log.d(TAG, "Saving transmitter mac: " + transmitterID + " = " + transmitterMAC);
         PersistentStore.cleanupOld(OB1G5_MACSTORE);
         PersistentStore.setString(OB1G5_MACSTORE + transmitterID, transmitterMAC);
@@ -1299,6 +1355,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     // Failed result from our bluetooth scan
     private synchronized void onScanFailure(Throwable throwable) {
+        UserError.Log.d(TAG, "Метод 57");
 
         if (throwable instanceof BleScanException) {
             lastScanException = ((BleScanException) throwable).getReason();
@@ -1367,6 +1424,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private void unbondIfAllowed() {
+        UserError.Log.d(TAG, "Метод 58");
         if (Pref.getBoolean("ob1_g5_allow_resetbond", true)) {
             unBond();
         } else {
@@ -1375,6 +1433,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private boolean resetBondIfAllowed(boolean force) {
+        UserError.Log.d(TAG, "Метод 59");
         if (Pref.getBoolean("ob1_g5_allow_resetbond", false)
                 && !specialPairingWorkaround()) {
             reset_bond(force);
@@ -1388,6 +1447,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     // Connection has been terminated or failed
     // - quite normal when device switches to sleep between readings
     private void onConnectionFailure(final Throwable throwable) {
+        UserError.Log.d(TAG, "Метод 60");
         // msg("Connection failure");
         // TODO under what circumstances should we change state or do something here?
         UserError.Log.d(TAG, "Connection Disconnected/Failed: " + throwable);
@@ -1444,6 +1504,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public void tryGattRefresh() {
+        UserError.Log.d(TAG, "Метод 61");
         if (JoH.ratelimit("ob1-gatt-refresh", 60)) {
             if (Pref.getBoolean("use_gatt_refresh", true)) {
                 try {
@@ -1468,6 +1529,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     // We have connected to the device!
     private void onConnectionReceived(RxBleConnection this_connection) {
+        UserError.Log.d(TAG, "Метод 62");
         msg("Connected");
 
         if (shouldServiceRun()) {
@@ -1500,6 +1562,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private synchronized void onConnectionStateChange(RxBleConnection.RxBleConnectionState newState) {
+        UserError.Log.d(TAG, "Метод 63");
         String connection_state = "Unknown";
         switch (newState) {
             case CONNECTING:
@@ -1536,6 +1599,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private void releaseFloating() {
+        UserError.Log.d(TAG, "Метод 64");
         val wl = floatingWakeLock;
         if (wl != null) {
             if (wl.isHeld()) {
@@ -1545,6 +1609,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public void connectionStateChange(String connection_state) {
+        UserError.Log.d(TAG, "Метод 65");
         static_connection_state = connection_state;
         if (connection_state.equals(CLOSED_OK_TEXT)) {
             JoH.releaseWakeLock(floatingWakeLock);
@@ -1553,6 +1618,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
 
     private void onServicesDiscovered(RxBleDeviceServices services) {
+        UserError.Log.d(TAG, "Метод 66");
         for (BluetoothGattService service : services.getBluetoothGattServices()) {
             if (d) UserError.Log.d(TAG, "Service: " + getUUIDName(service.getUuid()));
             if (service.getUuid().equals(BluetoothServices.CGMService)) {
@@ -1603,6 +1669,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private void onDiscoverFailed(Throwable throwable) {
+        UserError.Log.d(TAG, "Метод 67");
         UserError.Log.e(TAG, "Discover failure: " + throwable.toString());
         incrementErrors();
         prepareToWakeup();
@@ -1618,10 +1685,12 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private boolean genericBluetoothWatchdog() {
+        UserError.Log.d(TAG, "Метод 68");
         return Pref.getBoolean("bluetooth_watchdog", true);
     }
 
     public static void updateLast(long timestamp) {
+        UserError.Log.d(TAG, "Метод 69");
         if ((static_last_timestamp == 0) && (transmitterID != null)) {
             final String ref = "last-ob1-data-" + transmitterID;
             if (PersistentStore.getLong(ref) == 0) {
@@ -1633,6 +1702,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private String handleBleScanException(BleScanException bleScanException) {
+        UserError.Log.d(TAG, "Метод 70");
         final String text;
 
         switch (bleScanException.getReason()) {
@@ -1696,6 +1766,7 @@ public class Ob1G5CollectionService extends G5BaseService {
         public Observable<Void> asObservable(BluetoothGatt bluetoothGatt,
                                              RxBleGattCallback rxBleGattCallback,
                                              Scheduler scheduler) throws Throwable {
+            UserError.Log.d(TAG, "Метод 71");
 
             return Observable.fromCallable(() -> refreshDeviceCache(bluetoothGatt))
                     .delay(delay_ms, TimeUnit.MILLISECONDS, Schedulers.computation())
@@ -1714,6 +1785,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     final BroadcastReceiver mBondStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            UserError.Log.d(TAG, "Метод 72");
             if (!keep_running) {
                 try {
                     UserError.Log.e(TAG, "Rogue bond state receiver still active - unregistering");
@@ -1772,6 +1844,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     };
 
     public void instantCreateBondIfAllowed() {
+        UserError.Log.d(TAG, "Метод 73");
         if (getInitiateBondingFlag()) {
             try {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -1788,6 +1861,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
 
     private boolean getInitiateBondingFlag() {
+        UserError.Log.d(TAG, "Метод 74");
         return true; // There is no reason not to initiate bonding
     }
 
@@ -1795,6 +1869,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     private final BroadcastReceiver mPairingRequestRecevier = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            UserError.Log.d(TAG, "Метод 75");
             if (!keep_running) {
                 try {
                     UserError.Log.e(TAG, "Rogue pairing request receiver still active - unregistering");
@@ -1822,11 +1897,13 @@ public class Ob1G5CollectionService extends G5BaseService {
     };
 
     private static long secondsTill(Date retryDateSuggestion) {
+        UserError.Log.d(TAG, "Метод 76");
         return TimeUnit.MILLISECONDS.toSeconds(retryDateSuggestion.getTime() - System.currentTimeMillis());
     }
 
     @Override
     public IBinder onBind(Intent intent) {
+        UserError.Log.d(TAG, "Метод 77");
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -1837,6 +1914,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     private static volatile long lastProcessCalibrationState;
 
     public static void processCalibrationStateLite(final CalibrationState state, final long incomingTimestamp) {
+        UserError.Log.d(TAG, "Метод 78");
         if (incomingTimestamp > lastProcessCalibrationState) {
             processCalibrationStateLite(state);
         } else {
@@ -1845,6 +1923,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static boolean processCalibrationStateLite(final CalibrationState state) {
+        UserError.Log.d(TAG, "Метод 79");
         if (state == CalibrationState.Unknown) {
             UserError.Log.d(TAG, "Not processing push of unknown state as this is the unset state");
             return false;
@@ -1862,6 +1941,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static void processCalibrationState(final CalibrationState state) {
+        UserError.Log.d(TAG, "Метод 80");
 
         if (!processCalibrationStateLite(state)) {
             UserError.Log.d(TAG, "Not processing more calibration state as lite returned false");
@@ -1944,17 +2024,20 @@ public class Ob1G5CollectionService extends G5BaseService {
 
 
     private static void updateG5State(boolean now, boolean previous, String reference) {
+        UserError.Log.d(TAG, "Метод 81");
         if (now != previous) {
             PersistentStore.setBoolean(reference, now);
         }
     }
 
     private static void storeCalibrationState(final CalibrationState state) {
+        UserError.Log.d(TAG, "Метод 82");
         PersistentStore.setByte(OB1G5_STATESTORE, state.getValue());
         PersistentStore.setLong(OB1G5_STATESTORE_TIME, tsl());
     }
 
     private static CalibrationState getStoredCalibrationState() {
+        UserError.Log.d(TAG, "Метод 83");
         if (msSince(PersistentStore.getLong(OB1G5_STATESTORE_TIME)) < HOUR_IN_MS * 2) {
             return CalibrationState.parse(PersistentStore.getByte(OB1G5_STATESTORE));
         }
@@ -1962,6 +2045,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private static void loadCalibrationStateAsRequired() {
+        UserError.Log.d(TAG, "Метод 84");
         if ((lastSensorState == null) && JoH.quietratelimit("ob1-load-sensor-state", 5)) {
             final CalibrationState savedState = getStoredCalibrationState();
             if (savedState != Unknown) {
@@ -1971,12 +2055,14 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static boolean isG5ActiveButUnknownState() {
+        UserError.Log.d(TAG, "Метод 85");
         loadCalibrationStateAsRequired();
         return (lastSensorState == null || lastSensorState == CalibrationState.Unknown)
                 && usingNativeMode();
     }
 
     public static boolean isG5WarmingUp() {
+        UserError.Log.d(TAG, "Метод 86");
         loadCalibrationStateAsRequired();
         return lastSensorState != null
                 && lastSensorState == CalibrationState.WarmingUp
@@ -1984,6 +2070,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static boolean isG5SensorStarted() {
+        UserError.Log.d(TAG, "Метод 87");
         loadCalibrationStateAsRequired();
         return lastSensorState != null
                 && lastSensorState.sensorStarted()
@@ -1993,18 +2080,22 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static boolean isPendingStart() {
+        UserError.Log.d(TAG, "Метод 88");
         return pendingStart() && usingNativeMode();
     }
 
     public static boolean isPendingStop() {
+        UserError.Log.d(TAG, "Метод 89");
         return pendingStop() && usingNativeMode();
     }
 
     public static boolean isPendingCalibration() {
+        UserError.Log.d(TAG, "Метод 90");
         return pendingCalibration() && usingNativeMode();
     }
 
     public static boolean isG5WantingInitialCalibration() {
+        UserError.Log.d(TAG, "Метод 91");
         loadCalibrationStateAsRequired();
         return lastSensorStatus != null
                 && lastSensorState == CalibrationState.NeedsFirstCalibration
@@ -2012,6 +2103,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static boolean isG5WantingCalibration() {
+        UserError.Log.d(TAG, "Метод 92");
         loadCalibrationStateAsRequired();
         return lastSensorStatus != null
                 && lastSensorState.needsCalibration()
@@ -2020,32 +2112,38 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     // are we using the G5 Transmitter to evaluate readings
     public static boolean usingNativeMode() {
+        UserError.Log.d(TAG, "Метод 93");
         return usingCollector()
                 && Pref.getBooleanDefaultFalse("ob1_g5_use_transmitter_alg")
                 && Pref.getBooleanDefaultFalse(OB1G5_PREFS);
     }
 
     public static boolean onlyUsingNativeMode() {
+        UserError.Log.d(TAG, "Метод 94");
         return (usingNativeMode() && !fallbackToXdripAlgorithm())
                 || usingMockPreCalibrated();
     }
 
     public static boolean usingMockPreCalibrated() {
+        UserError.Log.d(TAG, "Метод 95");
         return Pref.getBooleanDefaultFalse("fake_data_pre_calibrated")
                 && DexCollectionType.getDexCollectionType() == DexCollectionType.Mock;
     }
 
     public static boolean isProvidingNativeGlucoseData() {
+        UserError.Log.d(TAG, "Метод 96");
         // TODO check age of data?
         loadCalibrationStateAsRequired();
         return usingNativeMode() && lastSensorState != null && lastSensorState.usableGlucose();
     }
 
     public static boolean fallbackToXdripAlgorithm() {
+        UserError.Log.d(TAG, "Метод 97");
         return Pref.getBooleanDefaultFalse("ob1_g5_fallback_to_xdrip");
     }
 
     public static void msg(String msg) {
+        UserError.Log.d(TAG, "Метод 98");
         lastState = msg + " " + JoH.hourMinuteString();
         UserError.Log.d(TAG, "Status: " + lastState);
         lastStateUpdated = tsl();
@@ -2069,6 +2167,7 @@ public class Ob1G5CollectionService extends G5BaseService {
  */
     // data for NanoStatus
     public static SpannableString nanoStatus() {
+        UserError.Log.d(TAG, "Метод 99");
         if (android_wear) {
             final SpannableStringBuilder builder = new SpannableStringBuilder();
             builder.append(lastSensorStatus != null ? lastSensorStatus + "\n" : "");
@@ -2102,10 +2201,12 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private boolean inPurdah() {
+        UserError.Log.d(TAG, "Метод 100");
         return purdahMs() > 0;
     }
 
     private long purdahMs() {
+        UserError.Log.d(TAG, "Метод 101");
         final long purdahTime = PersistentStore.getLong(PREF_PURDAH);
         final long purdahMs = JoH.msTill(purdahTime);
         if (purdahMs < 0 || purdahMs > Constants.HOUR_IN_MS * 4) {
@@ -2121,10 +2222,12 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     void needsBonding(final boolean required) {
+        UserError.Log.d(TAG, "Метод 102");
         plugin.setPersistence(6, joinBytes(new byte[]{(byte) ((required ? 0 : 1) << 1)}, fwChalCache(required)));
     }
 
     private static void handleUnknownFirmwareClick() {
+        UserError.Log.d(TAG, "Метод 103");
         UserError.Log.d(TAG, "handleUnknownFirmwareClick()");
         if (UpdateActivity.testAndSetNightly(true)) {
             val vr1 = (VersionRequest1RxMessage) Ob1G5StateMachine.getFirmwareXDetails(getTransmitterID(), 1);
@@ -2135,6 +2238,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     // data for MegaStatus
     public static List<StatusItem> megaStatus() {
+        UserError.Log.d(TAG, "Метод 104");
 
         init_tx_id(); // needed if we have not passed through local INIT state
 
@@ -2389,6 +2493,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public static void resetSomeInternalState() {
+        UserError.Log.d(TAG, "Метод 105");
         UserError.Log.d(TAG, "Resetting internal state by request");
         transmitterMAC = null; // probably gets reloaded from cache
         state = INIT;
@@ -2396,6 +2501,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     public synchronized void logFailure() {
+        UserError.Log.d(TAG, "Метод 106");
         val localMac = transmitterMAC;
         if (localMac == null) {
             UserError.Log.e(TAG, "Could not log failure as mac is null");
@@ -2408,6 +2514,7 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private static void expireFailures(final boolean all) {
+        UserError.Log.d(TAG, "Метод 107");
         val remove = new ArrayList<String>();
         for (val entry : failureTally.entrySet()) {
             if (all || msSince(entry.getValue()) > (MINUTE_IN_MS * 30)) {
@@ -2421,11 +2528,13 @@ public class Ob1G5CollectionService extends G5BaseService {
     }
 
     private static boolean inFailureTally(final String mac) {
+        UserError.Log.d(TAG, "Метод 108");
         if (mac == null) return false;
         return (failureTally.containsKey(mac));
     }
 
     public void listenForChangeInSettings(boolean listen) {
+        UserError.Log.d(TAG, "Метод 109");
         try {
             final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             if (listen) {
@@ -2440,6 +2549,7 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     public final SharedPreferences.OnSharedPreferenceChangeListener prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+            UserError.Log.d(TAG, "Метод 110");
             checkPreferenceKey(key, prefs);
         }
     };
@@ -2447,15 +2557,18 @@ public class Ob1G5CollectionService extends G5BaseService {
 
     // remember needs proguard exclusion due to access by reflection
     public static boolean isCollecting() {
+        UserError.Log.d(TAG, "Метод 111");
         return (state == CONNECT_NOW && msSince(static_last_timestamp) < MINUTE_IN_MS * 30) || msSince(static_last_timestamp) < MINUTE_IN_MS * 6;
     }
 
     public static boolean usingCollector() {
+        UserError.Log.d(TAG, "Метод 112");
         return Pref.getBooleanDefaultFalse(OB1G5_PREFS) && DexCollectionType.getDexCollectionType() == DexcomG5;
     }
 
     // TODO may want to move this to utility method in the future
     private static boolean isVolumeSilent() {
+        UserError.Log.d(TAG, "Метод 113");
         final AudioManager am = (AudioManager) xdrip.getAppContext().getSystemService(Context.AUDIO_SERVICE);
         return (am.getRingerMode() != AudioManager.RINGER_MODE_NORMAL);
     }

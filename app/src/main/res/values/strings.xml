@@ -270,6 +270,7 @@
     <string name="hardware_data_source">Hardware Data Source</string>
     <string name="enter_ten_character_dexcom_receiver_serial">Enter 10-character Dexcom Receiver serial number</string>
     <string name="dexcom_transmitter_id">Dexcom Transmitter ID</string>
+    <string name="poctech_transmitter_id">Poctech Transmitter ID</string>
     <string name="run_collector_in_foreground">Run Collector in foreground</string>
     <string name="shows_a_persistent_notification">Shows a persistent notification graph, visible on lock-screen and prevents Android killing the service.</string>
     <string name="list_of_receivers">List of receivers</string>
@@ -741,6 +742,7 @@
     <string name="use_any_tag">Use any-tag optimized reading method</string>
     <string name="low_level_value">Low level diagnostic/prototype value</string>
     <string name="transmitter_id">ID of your Dexcom Transmitter, e.g. 12AB3</string>
+    <string name="poc_transmitter_id">ID of your POCTech Transmitter, e.g. SN08405040</string>
     <string name="advanced_g5_settings">Advanced Dexcom settings for rare situations</string>
     <string name="g5_debug_settings">Dex Debug Settings</string>
     <string name="g5_scan_constantly">Some devices work better when scanning constantly, others do not. If reading is reliable when this setting is not selected, you should have improved battery life. Normally best to keep this disabled</string>
@@ -904,6 +906,7 @@
     <string name="tomato">Tomato</string>
     <string name="bubble">Bubble</string>
     <string name="atom">Atom</string>
+    <string name="CT_100_C14">CT-100 C14</string>
     <string name="use_gravity_sensor_to_rotate_items">Use Gravity Sensor to rotate items</string>
     <string name="low_bridge_battery">Low bridge battery</string>
     <string name="bridge_battery_dropped_to">Bridge battery dropped to:</string>
@@ -1719,6 +1722,7 @@
     <string name="enable_streaming_always_allow">Always connect to Libre2 sensors</string>
     <string name="enable_streaming_ask_each_time">Ask each time</string>
     <string name="enable_streaming_never">Never connect to Libre2 sensors</string>
+    <string name="libre_filter_length_0">no filter</string>
     <string name="libre_filter_length_10">10 minutes</string>
     <string name="libre_filter_length_15">15 minutes</string>
     <string name="libre_filter_length_25">25 minutes ></string>

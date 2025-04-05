@@ -232,6 +232,7 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
     public Viewport holdViewport = new Viewport();
     private boolean isBTShare;
     private boolean isG5Share;
+    private boolean isPoctechShare;
     private BroadcastReceiver _broadcastReceiver;
     private BroadcastReceiver newDataReceiver;
     private BroadcastReceiver statusReceiver;
@@ -2444,6 +2445,7 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
 
         isBTShare = CollectionServiceStarter.isBTShare(getApplicationContext());
         isG5Share = CollectionServiceStarter.isBTG5(getApplicationContext());
+        isPoctechShare = CollectionServiceStarter.isBTPoctech(getApplicationContext());
         boolean isWifiWixel = CollectionServiceStarter.isWifiWixel(getApplicationContext());
         boolean isWifiLibre = CollectionServiceStarter.isWifiLibre(getApplicationContext());
         alreadyDisplayedBgInfoCommon = false; // reset flag
@@ -2451,6 +2453,9 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
             updateCurrentBgInfoForBtShare(notificationText);
         }
         if (isG5Share) {
+            updateCurrentBgInfoCommon(collector, notificationText);
+        }
+        if (isPoctechShare) {
             updateCurrentBgInfoCommon(collector, notificationText);
         }
         if (isBTWixelOrLimiTTer || isDexbridgeWixel || isWifiBluetoothWixel || isWifiandBTLibre) {

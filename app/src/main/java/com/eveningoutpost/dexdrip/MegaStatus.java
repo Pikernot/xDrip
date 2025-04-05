@@ -10,6 +10,7 @@ import static com.eveningoutpost.dexdrip.Home.startWatchUpdaterService;
 import static com.eveningoutpost.dexdrip.utils.DexCollectionType.DexcomG5;
 import static com.eveningoutpost.dexdrip.utils.DexCollectionType.Medtrum;
 import static com.eveningoutpost.dexdrip.utils.DexCollectionType.NSFollow;
+import static com.eveningoutpost.dexdrip.utils.DexCollectionType.PoctechCT14;
 import static com.eveningoutpost.dexdrip.utils.DexCollectionType.SHFollow;
 import static com.eveningoutpost.dexdrip.utils.DexCollectionType.WebFollow;
 import static com.eveningoutpost.dexdrip.utils.DexCollectionType.CLFollow;
@@ -50,6 +51,7 @@ import com.eveningoutpost.dexdrip.services.DexCollectionService;
 import com.eveningoutpost.dexdrip.services.DoNothingService;
 import com.eveningoutpost.dexdrip.services.G5CollectionService;
 import com.eveningoutpost.dexdrip.services.Ob1G5CollectionService;
+import com.eveningoutpost.dexdrip.services.PoctechCollectionService;
 import com.eveningoutpost.dexdrip.services.WifiCollectionService;
 import com.eveningoutpost.dexdrip.ui.helpers.FloatingLocaleActivityWithScreenshot;
 import com.eveningoutpost.dexdrip.utilitymodels.JamorhamShowcaseDrawer;
@@ -122,6 +124,7 @@ public class MegaStatus extends FloatingLocaleActivityWithScreenshot {
 
     private static final String G4_STATUS = "BT Device";
     public static final String G5_STATUS = "Dex Status";
+    public static final String PoctechCT14_STATUS = "Poctech Status";
     private static final String MEDTRUM_STATUS = "Medtrum Status";
     private static final String IP_COLLECTOR = "IP Collector";
     private static final String XDRIP_PLUS_SYNC = "Followers";
@@ -176,6 +179,9 @@ public class MegaStatus extends FloatingLocaleActivityWithScreenshot {
                 }
             } else if (dexCollectionType.equals(Medtrum)) {
                 addAsection(MEDTRUM_STATUS, "Medtrum A6 Status");
+            }
+            if (dexCollectionType.equals(PoctechCT14)) {
+                addAsection(PoctechCT14_STATUS, "PoctechCT14 Collector and Transmitter Status");
             }
             if (BlueJayEntry.isEnabled()) {
                 addAsection(BLUEJAY_STATUS, "BlueJay Watch Status");
@@ -243,6 +249,8 @@ public class MegaStatus extends FloatingLocaleActivityWithScreenshot {
                     la.addRows(G5CollectionService.megaStatus());
                 }
                 break;
+            case PoctechCT14_STATUS:
+                la.addRows(PoctechCollectionService.megaStatus());
             case MEDTRUM_STATUS:
                 la.addRows(MedtrumCollectionService.megaStatus());
                 break;
