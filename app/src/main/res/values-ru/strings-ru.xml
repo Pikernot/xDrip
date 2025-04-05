@@ -1106,8 +1106,8 @@
     <string name="postponed_for">отложено на</string>
     <string name="completed">завершено</string>
     <string name="next_in">следующий в</string>
-    <string name="due">Из-за</string>
-    <string name="due_uppercase">ИЗ-ЗА</string>
+    <string name="due">Сработает</string>
+    <string name="due_uppercase">СРАБОТАЕТ</string>
     <string name="repeats_every">повторяется каждые</string>
     <string name="next">следующий</string>
     <string name="last">последний</string>
@@ -1194,6 +1194,8 @@
     <string name="summary_cloud_storage_api_download_enable">Также пытаться загружать события терапии из Nightscout</string>
     <string name="title_cloud_storage_api_download_enable">Загружать терапию</string>
     <string name="title_cloud_storage_api_download_from_xdrip">Пропускать записи из xDrip+</string>
+    <string name="nightscout_upload_failure_backfill_required">Отправка была завершена не для всех сайтов. Рекомендовано заполнение истории. Первая ошибка: %1$s</string>
+    <string name="title_nightscout_upload_failure_backfill_required">Непоследовательная многосайтовая отправка в Nightscout</string>
     <string name="summary_cloud_storage_api_download_from_xdrip">Избегать загрузку записей, которые были отправлены xDrip+</string>
     <string name="summary_bluetooth_meter_for_calibrations_auto">Калибровать, используя новые измерения глюкозы крови, если условия выглядят подходящими для этого, без подтверждения (экспериментально)</string>
     <string name="title_bluetooth_meter_for_calibrations_auto">Автоматическая калибровка</string>
@@ -1206,6 +1208,8 @@
     <string name="title_send_treatments_to_nightscout">Отправлять события терапии</string>
     <string name="summary_warn_nightscout_failures">Отображать уведомление со звуком, если загрузка в Nightscout не удалась.</string>
     <string name="title_warn_nightscout_failures">Тревога при ошибках</string>
+    <string name="summary_warn_nightscout_multi_site_upload_failure">xDrip очищает очередь отправки, даже если она была завершена успешно на один из сайтов, оставляя другие незавершенными. Эта настройка уведомит вас о такой ситуации, дав возможность заполнить историю, если необходимо.</string>
+    <string name="title_warn_nightscout_multi_site_upload_failure">Тревога при ошибке многосайтовой отправки</string>
     <string name="summary_nightscout_device_append_source_info">Для G5 отправляет тип коллектора (напр. OB1) и состояние заполнения показания из истории (для нативного) в Nigthscout.</string>
     <string name="title_nightscout_device_append_source_info">Добавить информацию об источнике к имени устройства</string>
     <string name="summary_tap_to_send_historical_data">Нажмите для отправки данных истории в Nightscout</string>
@@ -1956,4 +1960,22 @@
     <string name="bg_alert">ГК %1$s ТРЕВОГА: %2$s (@%3$s)</string>
     <string name="show_graphical_trend_arrow">Показывать графическую стрелку тренда</string>
     <string name="no_alert_in_silent_mode">Без тревог при режиме без звука</string>
+    <string name="calibration_slope_intercept">наклон = %1$s пересечение = %2$s</string>
+    <string name="axis_x_raw_value">Сырое значение</string>
+    <string name="axis_y_glucose_mgdl_mmol">Глюкоза + %s</string>
+    <string name="set_home_network">Установить домашнюю сеть</string>
+    <string name="my_home_network_is">Моя домашняя Wi-Fi-сеть:\n\n%s</string>
+    <string name="set_home_network_to">Домашняя сеть установлена на: %s</string>
+    <string name="not_connected_to_wifi">Не подключено к Wi-Fi</string>
+    <string name="at_home_only">Только дома</string>
+    <string name="speak">Произносить</string>
+    <string name="graph_note">Заметка на графике</string>
+    <string name="reminder_alternate_title">Альтернативный заголовок напоминания</string>
+    <string name="default_xdrip_reminder_sound">Стандартный звук напоминаний xDrip+</string>
+    <string name="custom_audio_file">Пользовательский аудиофайл</string>
+    <string name="android_ringtone_alarm">Звук/сигнал Android</string>
+    <string name="what_type_of_alert">Какой тип сигнала?</string>
+    <string name="system_sound_alarm">Системный звук</string>
+    <string name="custom_sound_alarm">Свой звук</string>
+    <string name="default_xdrip_sound">💀 Стандартный звук xDrip+</string>
 </resources>

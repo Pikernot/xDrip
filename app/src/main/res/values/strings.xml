@@ -2013,4 +2013,8 @@
     <string name="default_xdrip_reminder_sound">Default xDrip+ reminder sound</string>
     <string name="custom_audio_file">Custom Audio file</string>
     <string name="android_ringtone_alarm">Android Ringtone/Alarm</string>
+    <string name="what_type_of_alert">What type of Alert?</string>
+    <string name="system_sound_alarm">System Sound/Alarm</string>
+    <string name="custom_sound_alarm">Custom Sound/Alarm</string>
+    <string name="default_xdrip_sound">Default xDrip sound</string>
 </resources>
