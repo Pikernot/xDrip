@@ -234,6 +234,7 @@
     <string name="pref_was_less_than_min">%1$s был задан ниже минимального значения.  Заменено на минимум.</string>
     <string name="extrapolate_data_to_try_to_predict_lows">Экстраполировать данные, чтобы попытаться предсказать низкий</string>
     <string name="alarm_at_forecasted_low_mins">Тревога при предсказанном низком за x минут</string>
+    <string name="title_forecast_low_threshold">Порог</string>
     <string name="other_xdrip_plus_alerts">Другие тревоги xDrip+</string>
     <string name="xdrip_plus_display_settings">Настройки отображения xDrip+</string>
     <string name="display_customisations">Настройки отображения</string>
@@ -874,8 +875,6 @@
     <string name="use_gravity_sensor_to_rotate_items">Использовать датчик силы тяжести для поворота предметов</string>
     <string name="low_bridge_battery">Низкий заряд трансмиттера</string>
     <string name="bridge_battery_dropped_to">Заряд трансмиттера снизился до:</string>
-    <string name="sensor_will_expire_in">Сенсор закончится через</string>
-    <string name="sensor_expiring">Сенсор заканчивается</string>
     <string name="wake_up_screen">Включать экран</string>
     <string name="wake_up_screen_summary">Включать экран во время тревог. Может разблокировать устройства с выключенной блокировкой экрана.</string>
     <string name="reminders">Напоминания</string>
@@ -1500,6 +1499,8 @@
     <string name="summary_persistent_high_alert">Когда слишком долго выше порога высокого и не идет вниз</string>
     <string name="summary_persistent_high_threshold_link">Когда включено, Значение высокого – это порог.\nКогда выключено, порог – значение, заданное ниже.</string>
     <string name="title_persistent_high_threshold_link">Порог: Значение высокого</string>
+    <string name="summary_forecast_low_threshold_link">Когда включено, Значение низкого является порогом.\nКогда выключено, порог – значение, заданное ниже.</string>
+    <string name="title_forecast_low_threshold_link">Порог: Значение низкого</string>
     <string name="note_search_button">ПОИСК</string>
     <string name="all_note_button">ВСЕ</string>
     <string name="title_full_screen_mode">Полноэкранный режим</string>
@@ -1974,6 +1975,12 @@
     <string name="default_xdrip_reminder_sound">Стандартный звук напоминаний xDrip+</string>
     <string name="custom_audio_file">Пользовательский аудиофайл</string>
     <string name="android_ringtone_alarm">Звук/сигнал Android</string>
+    <string name="first_successful_connection_to_transmitter">"Первое успешное подключение к трансмиттеру %1$s"</string>
+    <string name="first_successful_connection_to_transmitter_em">"Первое успешное подключение к трансмиттеру %1$s с mac %2$s"</string>
+    <string name="sensor_expiring">Сенсор заканчивается</string>
+    <string name="sensor_will_expire_in">Сенсор закончится через %1$s</string>
+    <string name="xdrip_update">Обновление xDrip+</string>
+    <string name="a_new_version_on_channel_1_s_is_available">Доступна новая версия на канале %1$s</string>
     <string name="what_type_of_alert">Какой тип сигнала?</string>
     <string name="system_sound_alarm">Системный звук</string>
     <string name="custom_sound_alarm">Свой звук</string>
