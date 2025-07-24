@@ -339,10 +339,15 @@ public enum DexCollectionType {
     private static final boolean libreOneMinute = Pref.getBooleanDefaultFalse("libre_one_minute")
             && Pref.getBooleanDefaultFalse("engineering_mode");
 
+    private static final boolean libreOneMinuteFollowers = Pref.getBooleanDefaultFalse("follower_one_minute")
+            && Pref.getBooleanDefaultFalse("engineering_mode");
+
     public static long getCollectorSamplePeriod(final DexCollectionType type) {
         switch (type) {
             case LibreReceiver:
                 return libreOneMinute ? 60_000 : 300_000;
+            case Follower:
+                return libreOneMinuteFollowers ? 59_000 : 240_000;
             default:
                 return 300_000; // 5 minutes
         }
@@ -356,10 +361,5 @@ public enum DexCollectionType {
         final long period = getDexCollectionType().getSamplePeriod();
         return period - (period / 6); // TODO this needs more validation
     }
-
-    public static int getCurrentSamplesForPeriod(final long periodMs) {
-        return (int) (periodMs / getDexCollectionType().getSamplePeriod());
-    }
-
 
 }
