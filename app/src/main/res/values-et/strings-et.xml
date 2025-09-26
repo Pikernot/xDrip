@@ -255,6 +255,9 @@
     <string name="dexcom_transmitter_id">Dexcom saatja ID</string>
     <string name="run_collector_in_foreground">Jooksuta kogujat esiplaanil</string>
     <string name="shows_a_persistent_notification">Näitab järjepidevalt graafikut, on nähtav lukustusekraanil ja takistab Androidil selle teenuse peatamise.</string>
+    <string name="title_collector_in_foreground">Koguja esiplaanil</string>
+    <string name="summary_compact_ongoing_notification">Luba, et peita teavitusest graafik ja kuvada ainult jooksvat glükoosinäitu.</string>
+    <string name="title_compact_ongoing_notification">Kompaktne püsiv teavitus</string>
     <string name="list_of_receivers">Vastuvõtjate nimekiri</string>
     <string name="extra_tags_for_logging">Täiendavad märgised logimiseks</string>
     <string name="extra_tags_dialog_message">Siia sisestatud märgised salvestatakse xDrip sündmuste ajalukku. Formaat tag:level. Tase saab olla v,d,i. Näiteks bgreading:i,DexCollectionService:v.</string>
@@ -316,6 +319,10 @@
     <string name="pebble_and_android_wear_options">Valikud erinevate kellade jaoks</string>
     <string name="customize_colours">Kohanda värve</string>
     <string name="xdrip_plus_color_settings">xDrip+ värviseaded</string>
+    <string name="summary_font_settings">Kohanda fonte</string>
+    <string name="title_font_settings">Fondi seaded</string>
+    <string name="summary_enlarge_fonts_on_large_screens">Tõsta suurtel ekraanidel, nt. tahvelarvutis, automaatselt tekstisuurust</string>
+    <string name="title_enlarge_fonts_on_large_screens">Tõsta suurtel ekraanidel tekstisuurust</string>
     <string name="glucose_values_and_lines">Veresuhkru väärtused ja jooned</string>
     <string name="high_glucose_values">Kõrged veresuhkru väärtused</string>
     <string name="in_range_glucose_values">Sihtvahemikus olevad veresuhkruväärtused</string>
@@ -1921,4 +1928,9 @@
     <string name="sensor_will_expire_in">Sensor aegub %1$s</string>
     <string name="xdrip_update">xDrip+ uuendus</string>
     <string name="a_new_version_on_channel_1_s_is_available">Uus versioon on saadaval kanalis %1$s</string>
+    <string name="today">Täna</string>
+    <string name="yesterday">Eile</string>
+    <string name="last_7_days">Viimased 7 päeva</string>
+    <string name="last_30_days">Viimased 30 päeva</string>
+    <string name="last_90_days">Viimased 90 päeva</string>
 </resources>

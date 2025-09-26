@@ -232,8 +232,8 @@
     <string name="pref_was_greater_than_max">%1$s был задан выше максимального значения.  Заменено на максимум.</string>
     <string name="setting_pref_to_min">Установлено на мин.</string>
     <string name="pref_was_less_than_min">%1$s был задан ниже минимального значения.  Заменено на минимум.</string>
-    <string name="extrapolate_data_to_try_to_predict_lows">Экстраполировать данные, чтобы попытаться предсказать низкий</string>
-    <string name="alarm_at_forecasted_low_mins">Тревога при предсказанном низком за x минут</string>
+    <string name="extrapolate_data_to_try_to_predict_lows">Учитывая текущее значение и тренд, рассчитывать, какими будут следующие несколько показаний, если тренд сохранится (экстраполяция). При этом не учитываются активный инсулин и углеводы.</string>
+    <string name="alarm_at_forecasted_low_mins">Порог по времени [мин.]</string>
     <string name="title_forecast_low_threshold">Порог</string>
     <string name="other_xdrip_plus_alerts">Другие тревоги xDrip+</string>
     <string name="xdrip_plus_display_settings">Настройки отображения xDrip+</string>
@@ -415,7 +415,7 @@
     <string name="could_not_write_to_sdcard_check_perms">Невозможно записать на SD card - проверить разрешения?</string>
     <string name="loaded_preferences_restarting">Загружены настройки! - Перезапуск</string>
     <string name="could_not_load_preferences_check_pers">Не удалось загрузить настройки - проверить разрешения или файл?</string>
-    <string name="external_storage_not_writable">"Внешнее хранилище недоступно для записи "</string>
+    <string name="external_storage_not_writable">Внешнее хранилище недоступно для записи</string>
     <string name="successfully_deleted">Успешно удалено</string>
     <string name="deletion_problem">Проблема удаления</string>
     <string name="sdcard_not_writable_cannot_save">SD card недоступна для записи - невозможно сохранить</string>
@@ -431,7 +431,7 @@
     <string name="persistent_high_sound">Звук тревоги</string>
     <string name="forecast_lows">Прогнозировать низкие</string>
     <string name="raise_alarm_on_forecast_low">Включить тревогу при предсказанном низком</string>
-    <string name="notify_when_predicted_low_time_reaches_threshold">Уведомлять, когда время до предсказанного низкого достигает порога</string>
+    <string name="notify_when_predicted_low_time_reaches_threshold">Уведомлять, когда время до предсказанного низкого достигает порога по времени</string>
     <string name="predicted_low_sound">Звук тревоги</string>
     <string name="choose_sound_used_for_predicted_low_alarm">Выберите звук для тревоги.</string>
     <string name="notify_when_parakeet_device_stops_checking_in">Уведомлять, когда устройство Parakeet прекращает обнаруживаться</string>
@@ -752,6 +752,7 @@
     <string name="glucose_meters">Глюкометры</string>
     <string name="glucose_meter_options">Настройки для беспроводных глюкометров</string>
     <string name="auto_connect_to_meter">Автоматически подключаться и извлекать данные из стандартных подходящих глюкометров, таких как Contour Next One</string>
+    <string name="summary_use_nfc_meter">Скачивать показания глюкозы с глюкометра NFC, когда xDrip+ открыт</string>
     <string name="title_use_nfc_meter">Использовать NFC-глюкометр</string>
     <string name="use_bluetooth_meter">Использ. Bluetooth-глюкометр</string>
     <string name="scan_for_bluetooth_meter">Найти Bluetooth-глюкометр</string>
@@ -1223,6 +1224,11 @@
     <string name="title_tidepool_window_latency">Возраст данных в минутах</string>
     <string name="summary_tidepool_dev_servers">Если включено, загрузки будут идти в https://int-app.tidepool.org, а не в обычный https://app.tidepool.org/</string>
     <string name="title_tidepool_dev_servers">Использовать серверы Integration (тест)</string>
+    <string name="summary_tidepool_upload_when_chargeonly">Отправлять данные только во время зарядки</string>
+    <string name="title_tidepool_upload_when_chargeonly">Только при зарядке</string>
+    <string name="summary_tidepool_upload_only_wifi">Отправлять данные только при подключении к безлимитной сети, напр. WiFi</string>
+    <string name="title_tidepool_upload_only_wifi">Только через WiFi</string>
+    <string name="summary_tidepool_upload_no_treatment">Отправлять только данные ГК, чтобы избежать дубликатов с ручной выгрузкой с помпы</string>
     <string name="title_tidepool_upload_no_treatment">Не отправлять терапию</string>
     <string name="title_tidepool">Tidepool</string>
     <string name="show_help">Показать справку</string>
@@ -1376,6 +1382,7 @@
     <string name="title_ob1_g5_fallback_to_xdrip">Откат к xDrip</string>
     <string name="summary_ob1_minimize_scanning">Использовать эвристику для минимизации поиска Bluetooth + сохранения энергии</string>
     <string name="title_ob1_minimize_scanning">Минимизировать поиск</string>
+    <string name="summary_ob1_avoid_scanning">Избегать сканирования, насколько возможно (снижает использование батареи)</string>
     <string name="title_ob1_avoid_scanning">Избегать сканирования</string>
     <string name="summary_using_g6">Я использую сенсор G6 или Dexcom 1</string>
     <string name="title_using_g6">Поддержка G6/Dex1</string>
@@ -1954,13 +1961,6 @@
     <string name="use_camera_light">Использовать вспышку камеры</string>
     <string name="use_camera_light_summary">Мигать вспышкой камеры во время тревог, когда подключено к зарядке</string>
     <string name="g7_should_start_automatically">G7 должен запускаться автоматически</string>
-    <string name="summary_use_nfc_meter">Скачивать показания глюкозы с глюкометра NFC, когда xDrip+ открыт</string>
-    <string name="summary_tidepool_upload_when_chargeonly">Отправлять данные только во время зарядки</string>
-    <string name="title_tidepool_upload_when_chargeonly">Только при зарядке</string>
-    <string name="summary_tidepool_upload_only_wifi">Отправлять данные только при подключении к безлимитной сети, напр. WiFi</string>
-    <string name="title_tidepool_upload_only_wifi">Только через WiFi</string>
-    <string name="summary_tidepool_upload_no_treatment">Отправлять только данные ГК, чтобы избежать дубликатов с ручной выгрузкой с помпы</string>
-    <string name="summary_ob1_avoid_scanning">Избегать сканирования, насколько возможно (снижает использование батареи)</string>
     <string name="screenshot">Скриншот</string>
     <string name="bg_alert">ГК %1$s ТРЕВОГА: %2$s (@%3$s)</string>
     <string name="show_graphical_trend_arrow">Показывать графическую стрелку тренда</string>
@@ -1989,4 +1989,9 @@
     <string name="system_sound_alarm">Системный звук</string>
     <string name="custom_sound_alarm">Свой звук</string>
     <string name="default_xdrip_sound">💀 Стандартный звук xDrip+</string>
+    <string name="today">Сегодня</string>
+    <string name="yesterday">Вчера</string>
+    <string name="last_7_days">Последние 7 дней</string>
+    <string name="last_30_days">Последние 30 дней</string>
+    <string name="last_90_days">Последние 90 дней</string>
 </resources>
