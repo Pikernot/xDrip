@@ -255,6 +255,9 @@
     <string name="dexcom_transmitter_id">ID трансмиттера Dexcom</string>
     <string name="run_collector_in_foreground">Держать коллектор на переднем плане</string>
     <string name="shows_a_persistent_notification">Показывает постоянное уведомление с графиком, видимое на экране блокировки и не дающее Android остановить службу.</string>
+    <string name="title_collector_in_foreground">Коллектор на переднем плане</string>
+    <string name="summary_compact_ongoing_notification">Включите, чтобы скрыть график в постоянном уведомлении, оставив только текущее значение глюкозы.</string>
+    <string name="title_compact_ongoing_notification">Сжать постоянное уведомление</string>
     <string name="list_of_receivers">Список приемников</string>
     <string name="extra_tags_for_logging">Дополнительные теги для записи в журнал</string>
     <string name="extra_tags_dialog_message">Теги, введенные здесь, будут записываться в xDrip. Формат - тег:уровень. Уровень может быть v, d, i. Например, bgreading:i, DexCollectionService:v. Эти теги будут записываться с низким приоритетом в список ошибок и событий.</string>
@@ -316,6 +319,10 @@
     <string name="pebble_and_android_wear_options">Настройки для разных часов</string>
     <string name="customize_colours">Настройка цветов</string>
     <string name="xdrip_plus_color_settings">Настройки цветов xDrip+</string>
+    <string name="summary_font_settings">Персонализация шрифтов</string>
+    <string name="title_font_settings">Настройки шрифта</string>
+    <string name="summary_enlarge_fonts_on_large_screens">Автоматически увеличивать размер шрифта на больших экранах, таких как планшеты</string>
+    <string name="title_enlarge_fonts_on_large_screens">Увеличивать шрифты на больших экранах</string>
     <string name="glucose_values_and_lines">Значения и линии глюкозы</string>
     <string name="high_glucose_values">Высокие значения глюкозы</string>
     <string name="in_range_glucose_values">Нормальные значения глюкозы</string>
