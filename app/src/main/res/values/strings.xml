@@ -2034,10 +2034,6 @@
     <string name="sensor_will_expire_in">Sensor will expire in %1$s</string>
     <string name="xdrip_update">xDrip+ Update</string>
     <string name="a_new_version_on_channel_1_s_is_available">A new version on channel %1$s is available</string>
-    <string name="what_type_of_alert">What type of Alert?</string>
-    <string name="system_sound_alarm">System Sound/Alarm</string>
-    <string name="custom_sound_alarm">Custom Sound/Alarm</string>
-    <string name="default_xdrip_sound">Default xDrip sound</string>
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
     <string name="last_7_days">Last 7 days</string>
