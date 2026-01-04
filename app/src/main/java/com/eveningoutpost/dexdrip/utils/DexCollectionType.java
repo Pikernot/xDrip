@@ -1,6 +1,7 @@
 package com.eveningoutpost.dexdrip.utils;
 
 import com.eveningoutpost.dexdrip.OttaiAppReceiver;
+import com.eveningoutpost.dexdrip.cgm.glupro.GluProService;
 import com.eveningoutpost.dexdrip.services.DexCollectionService;
 import com.eveningoutpost.dexdrip.services.DexShareCollectionService;
 import com.eveningoutpost.dexdrip.services.DoNothingService;
@@ -51,6 +52,7 @@ public enum DexCollectionType {
     CLFollow("CLFollower"),
     Medtrum("Medtrum"),
     UiBased("UiBased"),
+    GluPro("GluPro"),
     Disabled("Disabled"),
     Mock("Mock"),
     Manual("Manual"),
@@ -62,6 +64,7 @@ public enum DexCollectionType {
     String internalName;
     private static final Map<String, DexCollectionType> mapToInternalName;
     private static final HashSet<DexCollectionType> usesBluetooth = new HashSet<>();
+    private static final HashSet<DexCollectionType> usesBluetoothScan = new HashSet<>();
     private static final HashSet<DexCollectionType> usesBtWixel = new HashSet<>();
     private static final HashSet<DexCollectionType> usesWifi = new HashSet<>();
     private static final HashSet<DexCollectionType> usesXbridge = new HashSet<>();
@@ -69,9 +72,11 @@ public enum DexCollectionType {
     private static final HashSet<DexCollectionType> usesLibre = new HashSet<>();
     private static final HashSet<DexCollectionType> isPassive = new HashSet<>();
     private static final HashSet<DexCollectionType> canNotStartStopOrCal = new HashSet<>();
+    private static final HashSet<DexCollectionType> alwaysNativeCal = new HashSet<>();
     private static final HashSet<DexCollectionType> usesBattery = new HashSet<>();
     private static final HashSet<DexCollectionType> usesDexcomRaw = new HashSet<>();
     private static final HashSet<DexCollectionType> usesTransmitterBattery = new HashSet<>();
+    private static final HashSet<DexCollectionType> newerCollector = new HashSet<>();
 
     public static final String DEX_COLLECTION_METHOD = "dex_collection_method";
 
@@ -85,7 +90,8 @@ public enum DexCollectionType {
             mapToInternalName.put(dct.internalName, dct);
         }
 
-        Collections.addAll(usesBluetooth, BluetoothWixel, DexcomShare, DexbridgeWixel, LimiTTer, WifiBlueToothWixel, DexcomG5, WifiDexBridgeWixel, LimiTTerWifi, Medtrum);
+        Collections.addAll(usesBluetooth, BluetoothWixel, DexcomShare, DexbridgeWixel, LimiTTer, WifiBlueToothWixel, DexcomG5, WifiDexBridgeWixel, LimiTTerWifi, Medtrum, GluPro);
+        Collections.addAll(usesBluetoothScan, BluetoothWixel, DexcomShare, DexbridgeWixel, LimiTTer, WifiBlueToothWixel, WifiDexBridgeWixel, LimiTTerWifi, Medtrum);
         Collections.addAll(usesBtWixel, BluetoothWixel, LimiTTer, WifiBlueToothWixel, LimiTTerWifi); // Name is misleading here, should probably be using dexcollectionservice
         Collections.addAll(usesWifi, WifiBlueToothWixel, WifiWixel, WifiDexBridgeWixel, Mock, LimiTTerWifi, LibreWifi);
         Collections.addAll(usesXbridge, DexbridgeWixel, WifiDexBridgeWixel);
@@ -93,9 +99,11 @@ public enum DexCollectionType {
         Collections.addAll(usesLibre, LimiTTer, LibreAlarm, LimiTTerWifi, LibreWifi, LibreReceiver);
         Collections.addAll(isPassive, NSEmulator, NSFollow, SHFollow, WebFollow, LibreReceiver, UiBased, CLFollow, AidexReceiver, OttaiAppReceiver);
         Collections.addAll(canNotStartStopOrCal, NSFollow, SHFollow, WebFollow, UiBased, CLFollow, Disabled); // Collectors that cannot start/stop sensor or submit calibration
+        Collections.addAll(alwaysNativeCal, Follower, GluPro); // always allow calibration entry
         Collections.addAll(usesBattery, BluetoothWixel, DexbridgeWixel, WifiBlueToothWixel, WifiDexBridgeWixel, Follower, LimiTTer, LibreAlarm, LimiTTerWifi, LibreWifi); // parakeet separate
         Collections.addAll(usesDexcomRaw, BluetoothWixel, DexbridgeWixel, WifiWixel, WifiBlueToothWixel, DexcomG5, WifiDexBridgeWixel, Mock);
         Collections.addAll(usesTransmitterBattery, WifiWixel, BluetoothWixel, DexbridgeWixel, WifiBlueToothWixel, WifiDexBridgeWixel); // G4 transmitter battery
+        Collections.addAll(newerCollector, NSFollow, SHFollow, WebFollow, CLFollow, GluPro);
     }
 
 
@@ -126,6 +134,14 @@ public enum DexCollectionType {
 
     public static boolean hasBluetooth() {
         return usesBluetooth.contains(getDexCollectionType());
+    }
+
+    public static boolean isNewerCollector() {
+        return newerCollector.contains(getDexCollectionType());
+    }
+
+    public static boolean isAlwaysNativeCal() {
+        return alwaysNativeCal.contains(getDexCollectionType());
     }
 
     public static boolean hasBtWixel() {
@@ -164,6 +180,9 @@ public enum DexCollectionType {
         return usesBtWixel.contains(type) || usesXbridge.contains(type) || type.equals(LimiTTer);
     }
 
+    public static boolean usesBluetoothScan() {
+        return usesBluetoothScan.contains(getDexCollectionType());
+    }
     public static boolean usesClassicTransmitterBattery() {
         return usesTransmitterBattery.contains(getDexCollectionType());
     }
@@ -222,6 +241,8 @@ public enum DexCollectionType {
                 return UiBasedCollector.class;
             case CLFollow:
                 return CareLinkFollowService.class;
+            case GluPro:
+                return GluProService.class;
             default:
                 return DexCollectionService.class;
         }
