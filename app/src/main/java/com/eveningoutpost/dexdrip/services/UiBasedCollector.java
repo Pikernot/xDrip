@@ -103,7 +103,10 @@ public class UiBasedCollector extends NotificationListenerService {
         coOptedPackages.add("com.senseonics.gen12androidapp");
         coOptedPackages.add("com.senseonics.androidapp");
         coOptedPackages.add("com.microtech.aidexx.mgdl");
+        coOptedPackages.add("com.microtech.aidexx.linxneo.mmoll");
         coOptedPackages.add("com.microtech.aidexx.equil.mmoll");
+        coOptedPackages.add("com.microtech.aidexx.diaexport.mmoll"); //for microtech germany version, typo is intentional!
+        coOptedPackages.add("com.microtech.aidexx.smart.mmoll"); //for microtech Brazil version
         coOptedPackages.add("com.ottai.seas");
         coOptedPackages.add("com.microtech.aidexx"); //for microtech china version
         coOptedPackages.add("com.ottai.tag"); // //for ottai china version
@@ -113,6 +116,7 @@ public class UiBasedCollector extends NotificationListenerService {
         coOptedPackages.add("com.sinocare.ican.health.ce");
         coOptedPackages.add("com.sinocare.ican.health.ru");
         coOptedPackages.add("com.suswel.ai");
+        coOptedPackages.add("com.glucotech.app.android");
 
         coOptedPackagesAll.add("com.dexcom.dexcomone");
         coOptedPackagesAll.add("com.dexcom.d1plus");
@@ -122,7 +126,10 @@ public class UiBasedCollector extends NotificationListenerService {
         coOptedPackagesAll.add("com.senseonics.gen12androidapp");
         coOptedPackagesAll.add("com.senseonics.androidapp");
         coOptedPackagesAll.add("com.microtech.aidexx.mgdl");
+        coOptedPackagesAll.add("com.microtech.aidexx.linxneo.mmoll");
         coOptedPackagesAll.add("com.microtech.aidexx.equil.mmoll");
+        coOptedPackagesAll.add("com.microtech.aidexx.diaexport.mmoll");
+        coOptedPackagesAll.add("com.microtech.aidexx.smart.mmoll"); //for microtech Brazil version
         coOptedPackagesAll.add("com.ottai.seas");
         coOptedPackagesAll.add("com.microtech.aidexx"); //for microtech china version
         coOptedPackagesAll.add("com.ottai.tag"); // //for ottai china version
@@ -132,12 +139,16 @@ public class UiBasedCollector extends NotificationListenerService {
         coOptedPackagesAll.add("com.sinocare.ican.health.ce");
         coOptedPackagesAll.add("com.sinocare.ican.health.ru");
         coOptedPackagesAll.add("com.suswel.ai");
+        coOptedPackagesAll.add("com.glucotech.app.android");
 
         companionAppIoBPackages.add("com.insulet.myblue.pdm");
+        companionAppIoBPackages.add("com.medtronic.diabetes.minimedmobile.eu");
 
         // The IoB value should be captured into the first match group.
         // English localization of the Omnipod 5 App
         companionAppIoBRegexes.add(Pattern.compile("IOB: ([\\d\\.,]+) U"));
+        // MiniMed Mobile (EU): "Active Insulin" label and "1.234 U" value in separate TextViews
+        companionAppIoBRegexes.add(Pattern.compile("^([\\d\\.]+) U$"));
     }
 
     @Override
@@ -171,10 +182,24 @@ public class UiBasedCollector extends NotificationListenerService {
         if (notification.contentView != null) {
             processCompanionAppIoBNotificationCV(notification.contentView);
         } else {
-            UserError.Log.e(TAG, "Content is empty");
+            processCompanionAppIoBNotificationTitle(notification);
         }
     }
 
+    private void processCompanionAppIoBNotificationTitle(final Notification notification) {
+        Double iob = null;
+        try {
+            String notificationTitle = notification.extras.getString("android.title");
+            iob = parseIoB(notificationTitle);
+
+            if (iob != null) {
+                if (debug) UserError.Log.d(TAG, "Inserting new IoB value extracted from title: " + iob);
+                iob_store.set(iob);
+            }
+        } catch (Exception e) {
+            UserError.Log.e(TAG, "exception in processCompanionAppIoBNotificationTitle: " + e);
+        }
+    }
     private void processCompanionAppIoBNotificationCV(final RemoteViews cview) {
         if (cview == null) return;
         val applied = cview.apply(this, null);
@@ -196,7 +221,7 @@ public class UiBasedCollector extends NotificationListenerService {
             }
 
             if (iob != null) {
-                if (debug) UserError.Log.d(TAG, "Inserting new IoB value: " + iob);
+                if (debug) UserError.Log.d(TAG, "Inserting new IoB value extracted from CV: " + iob);
                 iob_store.set(iob);
             }
         } catch (Exception e) {

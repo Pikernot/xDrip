@@ -492,10 +492,10 @@
     <string name="double_tap_or_pinch_to_zoom">Двойное нажатие или щипок для масштабирования.</string>
     <string name="start_sensor">Запустить сенсор</string>
     <string name="debug_and_other_misc_options">Отладка и другие настройки</string>
-    <string name="low_glucose_values">Низкие значения глюкозы</string>
-    <string name="bad_glucose_values">Неверные значения глюкозы</string>
+    <string name="low_glucose_values">Низкие показания глюкозы</string>
+    <string name="bad_glucose_values">Неверные показания глюкозы</string>
     <string name="revert_to_default">Вернуть к стандартному</string>
-    <string name="filtered_values">Сглаженные значения</string>
+    <string name="filtered_values">Сглаженные показания</string>
     <string name="treatment_color">Активный инсулин</string>
     <string name="treatment_color_dark">Активность инсулина</string>
     <string name="predictive_color">Прогноз глюкозы</string>
@@ -1610,6 +1610,7 @@
     <string name="calibrate">Откалибровать</string>
     <string name="confirm_delete">Подтвердите удаление</string>
     <string name="are_you_sure_you_want_to_delete_this_treatment">Вы уверены, что хотите удалить эту запись терапии?</string>
+    <string name="toast_treatment_more_than_one_hour_in_the_future">xDrip не принимает терапию более чем на 1 час в будущем.</string>
     <string name="no_data_received_from_master_yet">Данные от мастера пока не получены</string>
     <string name="last_from_master_">Последнее от мастера:</string>
     <string name="prepare_to_test">Приготовьтесь к тесту!</string>
@@ -1780,7 +1781,6 @@
     <string name="need_permission_for_saved_files">Необходимо разрешение для сохранения файлов</string>
     <string name="stopping_sensor_due_to_serial_number_change">Останавливаем сенсор из-за смены серийного номера</string>
     <string name="sensor_raw_data_sanity_failure">Ошибка raw-данных сенсора (возможно, сенсор не под кожей):</string>
-    <string name="refusing_to_create_a_treatment_more_than_1_hours_in_the_future">Невозможно создать болюс/углеводы более чем на 1 час в будущем!</string>
     <string name="could_not_find_miband_try_again">Не удалось найти Mi Band, пожалуйста, попробуйте еще раз</string>
     <string name="wrong_mi_band_authorization_key_recheck">Неверный ключ авторизации Mi Band, пожалуйста, проверьте ключ и попробуйте подключиться еще раз</string>
     <string name="calibration_sent_to_master_for_processing">Калибровка отправлена на мастер для обработки</string>
@@ -2001,4 +2001,11 @@
     <string name="last_7_days">Последние 7 дней</string>
     <string name="last_30_days">Последние 30 дней</string>
     <string name="last_90_days">Последние 90 дней</string>
+    <string name="volume_profile_high">Высокий</string>
+    <string name="volume_profile_medium">Средний</string>
+    <string name="volume_profile_ascending">Нарастающий</string>
+    <string name="volume_profile_vibrate_only">Только вибрация</string>
+    <string name="volume_profile_silent">Тихий</string>
+    <string name="glupro_disconnected">Отключено</string>
+    <string name="glupro_connected">Подключено</string>
 </resources>
